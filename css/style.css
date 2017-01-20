@@ -1,5 +1,23 @@
 .snake{
+    position: absolute;
+    border: 1px solid #fff;
     width: 18px;
     height: 18px;
     background: #000;
+}
+.apple{
+    position: absolute;
+    border: 1px solid #fff;
+    left: calc(15 * 20px);
+    top: calc(16 * 20px);
+    width: 18px;
+    height:18px;
+    background: #f00;
+}
+#game{
+    position: relative;
+    width: 500px;
+    height: 500px;
+    border: 1px solid #000;
+    margin: 10px auto;
 }

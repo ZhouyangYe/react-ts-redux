@@ -34,3 +34,11 @@ export const createApple = ()=>{
         payload: "Create Apple"
     }
 }
+
+export const move = (direction:any)=>{
+    console.log("Moving "+direction);
+    return {
+        type: "MOVE",
+        payload: direction
+    }
+}
