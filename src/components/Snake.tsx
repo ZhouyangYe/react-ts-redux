@@ -5,7 +5,9 @@ export interface StateProps{
     units: Array<Unit>;
     direction: string;
     apple: Unit;
+    gameOver :boolean;
 }
+
 export interface DispatchProps{
     goUp: ()=>{};
     goDown: ()=>{};
@@ -21,8 +23,12 @@ export class Snake extends React.Component<StateProps & DispatchProps ,any>{
     private componentDidMount(){
         window.addEventListener('keydown',this.handleKeyDown,false);
         this.timer = setInterval(()=>{
-            this.handleMove({direction:this.props.direction,apple:this.props.apple});
-        },800);
+            if(this.props.gameOver){
+                clearInterval(this.timer);
+            }else{
+                this.handleMove({direction:this.props.direction,apple:this.props.apple});
+            }
+        },300);
     }
 
     private  componentWillUnmount(){
@@ -79,4 +85,5 @@ export class Snake extends React.Component<StateProps & DispatchProps ,any>{
     render(){
         return <div>{this.createSnake()}</div>
     }
+
 }

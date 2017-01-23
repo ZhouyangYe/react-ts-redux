@@ -11,6 +11,7 @@ function mapStateToProps(state: any):StateProps {
         units: state.app.units as Array<Unit>,
         direction: state.direction as string,
         apple: state.app.apple as Unit,
+        gameOver: state.app.gameOver as boolean,
     };
 }
 
