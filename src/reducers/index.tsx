@@ -1,11 +1,8 @@
 import {combineReducers} from 'redux';
-import SnakeReducer from './reducer-snake';
-import AppleReducer from './reducer-apple';
-import ControlReducer from './reducer-control';
+import {AppReducer, ControlReducer} from './reducer-snake';
 
 const allReducers = combineReducers({
-    snake: SnakeReducer,
-    apple: AppleReducer,
+    app: AppReducer,
     direction: ControlReducer,
 });
 

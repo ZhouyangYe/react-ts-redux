@@ -1,44 +1,38 @@
-export const goUp = ()=>{
+import Unit from '../models/Unit';
+
+export const goUp = ():{}=>{
     console.log("You are trying to go UP");
     return {
         type: "UP",
         payload: "UP"
     }
-}
-export const goLeft = ()=>{
+};
+export const goLeft = ():{}=>{
     console.log("You are trying to go LEFT");
     return {
         type: "LEFT",
         payload: "LEFT"
     }
-}
-export const goRight = ()=>{
+};
+export const goRight = ():{}=>{
     console.log("You are trying to go RIGHT");
     return {
         type: "RIGHT",
         payload: "RIGHT"
     }
-}
-export const goDown = ()=>{
+};
+export const goDown = ():{}=>{
     console.log("You are trying to go DOWN");
     return {
         type: "DOWN",
         payload: "DOWN"
     }
-}
+};
 
-export const createApple = ()=>{
-    console.log("Creating apple!");
-    return {
-        type: "CREATE_APPLE",
-        payload: "Create Apple"
-    }
-}
-
-export const move = (direction:any)=>{
-    console.log("Moving "+direction);
+export const move = (data:{direction:string,apple:Unit}):{}=>{
+    console.log("Moving "+data.direction);
     return {
         type: "MOVE",
-        payload: direction
+        payload: data
     }
-}
+};

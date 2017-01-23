@@ -1,11 +1,11 @@
 import * as React from 'react';
-import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {Apple} from "./Apple";
+import {Apple, StateProps} from './Apple';
+import Unit from '../models/Unit';
 
-function mapStateToProps(state: any){
+function mapStateToProps(state: any):StateProps{
     return {
-        apple: state.apple
+        apple: state.app.apple as Unit,
     };
 }
 
