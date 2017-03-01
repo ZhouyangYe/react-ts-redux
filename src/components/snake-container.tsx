@@ -12,6 +12,7 @@ function mapStateToProps(state: any):StateProps {
         direction: state.direction as string,
         apple: state.app.apple as Unit,
         gameOver: state.app.gameOver as boolean,
+        difficulty: state.app.difficulty as number,
     };
 }
 

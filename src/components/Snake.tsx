@@ -1,11 +1,13 @@
 import * as React from 'react';
 import Unit from '../models/Unit';
+import {acceleration} from '../common';
 
 export interface StateProps{
     units: Array<Unit>;
     direction: string;
     apple: Unit;
-    gameOver :boolean;
+    gameOver : boolean;
+    difficulty: number;
 }
 
 export interface DispatchProps{
@@ -22,13 +24,7 @@ export class Snake extends React.Component<StateProps & DispatchProps ,any>{
 
     private componentDidMount(){
         window.addEventListener('keydown',this.handleKeyDown,false);
-        this.timer = setInterval(()=>{
-            if(this.props.gameOver){
-                clearInterval(this.timer);
-            }else{
-                this.handleMove({direction:this.props.direction,apple:this.props.apple});
-            }
-        },300);
+        this.timer = setInterval(this.handleMove,300);
     }
 
     private  componentWillUnmount(){
@@ -36,8 +32,18 @@ export class Snake extends React.Component<StateProps & DispatchProps ,any>{
         clearInterval(this.timer);
     }
 
-    private handleMove = (data:{direction:string,apple:Unit})=> {
-        this.props.move(data);
+    private handleMove = ()=>{
+        if(this.props.gameOver){
+            clearInterval(this.timer);
+        }else{
+            let duration = 800 - this.props.difficulty*acceleration;
+            console.log(duration);
+            if(duration > 180){
+                clearInterval(this.timer);
+                this.timer = setInterval(this.handleMove,duration);
+            }
+            this.props.move({direction:this.props.direction,apple:this.props.apple});
+        }
     };
 
     private handleKeyDown = (e:any)=> {

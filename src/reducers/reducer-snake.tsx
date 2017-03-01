@@ -23,7 +23,7 @@ function collide(arr:Array<Unit>):boolean{
     return result;
 }
 
-export function AppReducer(state:{units:Array<Unit>,apple:Unit,gameOver:boolean} = {units:initial,apple:getApple(initial),gameOver:false},action: any):{units:Array<Unit>,apple:Unit,gameOver:boolean}{
+export function AppReducer(state:{units:Array<Unit>,apple:Unit,gameOver:boolean,difficulty:number} = {units:initial,apple:getApple(initial),gameOver:false,difficulty:0},action: any):{units:Array<Unit>,apple:Unit,gameOver:boolean,difficulty:number}{
     switch (action.type){
         case "MOVE":
             G.pressed = false;
@@ -54,6 +54,10 @@ export function AppReducer(state:{units:Array<Unit>,apple:Unit,gameOver:boolean}
                 let unit = new Unit(last.axisX,last.axisY);
                 state.units.push(unit);
                 state.apple = getApple(state.units);
+                G.num_apple++;
+                if(G.num_apple%3 === 0){
+                    state.difficulty++;
+                }
             }else if(collide(state.units)){
                 state.gameOver = true;
             }

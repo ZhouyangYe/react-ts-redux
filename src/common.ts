@@ -8,7 +8,9 @@ export const initial:Array<Unit> = [new Unit(40,0),new Unit(20,0),new Unit(0,0)]
 
 export const last:Unit = new Unit(0,0);
 
-export const G:any = {pressed: false};
+export const G:any = {pressed: false, num_apple: 0};
+
+export const acceleration:number = 100;
 
 export const getApple = (units:Array<Unit>):Unit => {
     let apple = new Unit(0,0);
